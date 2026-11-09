@@ -1,0 +1,11 @@
+# Private keys & extension packages
+*.pem
+*.crx
+*.zip
+
+# Nested duplicate folder if present
+motion-controller/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db

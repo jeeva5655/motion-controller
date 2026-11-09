@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Motion Controller — engine</title></head>
+<body>
+  <!-- Never shown to the user; chrome.offscreen documents have no window. -->
+  <video id="cam" width="320" height="240" muted playsinline></video>
+  <canvas id="frame" width="320" height="240"></canvas>
+  <script type="module" src="offscreen.js"></script>
+</body>
+</html>

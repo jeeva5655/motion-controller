@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Motion Game Controller",
+  "version": "1.0.0",
+  "description": "Play browser games with your body. Jump, duck and lean in front of your webcam to send arrow-key/WASD presses to any game tab.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Motion Game Controller — click to target this tab"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "offscreen",
+    "activeTab",
+    "scripting",
+    "storage",
+    "debugger"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "libs/mediapipe/*",
+        "libs/mediapipe/wasm/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  }
+}

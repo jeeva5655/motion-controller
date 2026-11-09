@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Motion Game Controller</title>
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <img src="icons/icon48.png" width="22" height="22" alt="">
+    <h1>Motion Game Controller</h1>
+    <span id="statusPill" class="pill">Idle</span>
+  </header>
+
+  <section class="target">
+    <span class="target-label">Controlling</span>
+    <span id="targetName" class="target-name">No tab selected</span>
+  </section>
+
+  <div id="warningBox" class="warning" hidden></div>
+
+  <section class="stage">
+    <canvas id="stage" width="320" height="190"></canvas>
+    <div id="stageEmpty" class="stage-empty">Click the extension icon on your game tab, then press Start.</div>
+  </section>
+
+  <section class="readout">
+    <div class="readout-main">
+      <span id="actionDot" class="dot"></span>
+      <span id="actionLabel">Standing</span>
+    </div>
+    <div id="telemetry" class="telemetry">dx 0.000&nbsp;&nbsp;dy 0.000</div>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <span class="stat-value" id="calorieValue">0.0</span>
+      <span class="stat-label">kcal</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value" id="timeValue">00:00</span>
+      <span class="stat-label">time</span>
+    </div>
+  </section>
+
+  <section class="controls">
+    <button id="startStopBtn" class="btn btn-primary">Start</button>
+    <button id="recalBtn" class="btn btn-secondary" hidden>Re-calibrate</button>
+  </section>
+
+  <section class="field">
+    <label for="profileSelect">Game profile</label>
+    <select id="profileSelect"></select>
+  </section>
+
+  <section id="customKeys" class="field custom-keys" hidden>
+    <div class="key-row"><label>Jump</label><select data-action="JUMP"></select></div>
+    <div class="key-row"><label>Duck</label><select data-action="DUCK"></select></div>
+    <div class="key-row"><label>Left</label><select data-action="LEFT"></select></div>
+    <div class="key-row"><label>Right</label><select data-action="RIGHT"></select></div>
+  </section>
+
+  <details class="field">
+    <summary>Sensitivity</summary>
+    <div class="slider-row">
+      <label>Jump <span id="jumpVal" class="mono"></span></label>
+      <input type="range" id="jumpSlider" min="0.015" max="0.10" step="0.005">
+    </div>
+    <div class="slider-row">
+      <label>Duck <span id="duckVal" class="mono"></span></label>
+      <input type="range" id="duckSlider" min="0.015" max="0.12" step="0.005">
+    </div>
+    <div class="slider-row">
+      <label>Lean left/right <span id="leanVal" class="mono"></span></label>
+      <input type="range" id="leanSlider" min="0.02" max="0.12" step="0.005">
+    </div>
+  </details>
+
+  <section class="field advanced">
+    <div class="toggle-row">
+      <label for="advToggle">Advanced compatibility mode</label>
+      <input type="checkbox" id="advToggle">
+    </div>
+    <p class="hint">For games that ignore normal key presses (often Unity/WebGL games). Uses Chrome's debugger API, which shows a visible "debugging this browser" banner on the tab while it's on.</p>
+  </section>
+
+  <footer class="foot">Pose detection runs on-device. Video never leaves this computer.</footer>
+
+  <script src="common.js"></script>
+  <script src="panel.js"></script>
+</body>
+</html>
